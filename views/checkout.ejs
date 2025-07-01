@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訂單</title>
+</head>
+<body>
+    <h1>確認訂單</h1>
+    <p>訂單編號: <%= order.orderId %></p>
+    <p>總金額: <%= order.amount %> <%= order.currency %></p>
+    <p>內容:</p>
+    <p>名: <%= order.packages[0].products[0].name %></p>
+    <p>數量: <%= order.packages[0].products[0].quantity %></p>
+    <p>金額: <%= order.packages[0].products[0].price %></p>
+    <form action="/createOrder/<%= order.orderId %>" method="post">
+        <input type="hidden" name="orderId" value="<%= order.orderId %>">
+        <input type="hidden" name="amount" value="<%= order.amount %>">
+        <button type="submit">用Line Pay付款</button>
+    </form>
+</body>
+</html>
